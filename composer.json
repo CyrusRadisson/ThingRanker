@@ -1,0 +1,19 @@
+{
+    "name": "cyrus/qrcode_generator",
+    "description": "qrcode",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Cyrus\\QrcodeGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "cyrus"
+        }
+    ],
+    "require": {
+        "chillerlan/php-qrcode": "^4.3"
+    }
+}
