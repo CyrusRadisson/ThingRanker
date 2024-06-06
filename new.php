@@ -9,7 +9,6 @@ $password = DB_PASS;
 $dbname = DB_NAME;
 
 
-
 //TODO: maybe add a pin to lock the setup page, better ID logic
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -23,7 +22,7 @@ try {
         id int auto_increment primary key,
         name varchar(50) not null,
         rating smallint default 1000,
-        confidence smallint default 500
+        variance smallint default 500
     );
     CREATE trigger $comp->id" . "trigger
     AFTER insert
@@ -32,7 +31,7 @@ try {
     BEGIN
         UPDATE comps
         SET updated = NOW()
-        WHERE id = '$comp->id';
+        WHERE id = :comp_id;
     END;
     INSERT INTO comps (id, name) VALUES (:comp_id, :comp_name)
     ";
