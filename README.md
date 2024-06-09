@@ -62,11 +62,35 @@ Pairings are shown on this page. It will show 2 options, and the user has to pic
 ### Ranking Page
 This page will show the rankings of the items after the competition finishes or halfway through the competition. Doesn't need much else, other than maybe the ability to reset it.
 
-## Docker Installation
-For a more reliable install, manually install docker and run `docker compose up` in the repo direcotry after you have cloned the repository. <br> <br>
-For a fast and easy installation, you can run the start.sh file. Do note that this file has only been tested on debian systems, so there is a chance it doesn't work. It can be downloaded and run with `curl -sfL https://install.jacklucksack.com | sudo sh`. If you want to run it again, you can either use the same command in the original directory or you can cd into ThingRanker and run `docker compose up`.
-<br> <br>
-Once the output says server x plugin ready, you can use the app. 
+## Debian Installation
+To install the project, start by installing apache2, php, mariadb-server, git, and php-mysql using `sudo apt install apache2 php mariadb-server git php-mysql` or your other favorite package manager. Next, run `sudo a2enmod rewrite`. This enables .htaccess files and the RewriteEngine. <br><br>
+To clone the repository into the /var/www/html directory, you can remove the current one with `sudo rm -rf /var/www/html` and clone into it with `git clone "https://github.com/Spheroman/ThingRanker.git" /var/www/html`. <br><br>
+Next, we have to setup the database. If you just installed mariadb, then your default password will be blank and you can log in with `mysql`. If you changed your password already, login using `mysql -p` and run the following commands: <br>
+```
+CREATE USER ThingRanker@localhost IDENTIFIED WITH mysql_native_password USING PASSWORD('your password here');
+DROP DATABASE IF EXISTS test;
+CREATE DATABASE ThingRanker;
+GRANT ALL PRIVILEGES ON ThingRanker.* TO ThingRanker@localhost;
+USE ThingRanker;
+create table comps
+(
+    id          char(6)                    not null,
+    name        varchar(100)               not null,
+    time        datetime   default (now()) not null,
+    updated     datetime   default (now()) null on update CURRENT_TIMESTAMP,
+    started     tinyint(1) default 0       null,
+    passcode    char(60)                   null,
+    publicadd   tinyint(1) default 0       not null,
+    addwhilerun tinyint(1) default 0       not null,
+    playerlimit smallint   default -1      not null,
+    pairingtype tinyint    default 0       not null,
+    maxrounds   smallint   default -1      not null
+);
+ALTER USER root@localhost IDENTIFIED BY 'a secure password';
+```
+Make sure that you use the password you want the app to use in the first line. Then, modify config.php with `nano /var/www/html/config.php` and update DB_PASS to use your new password. <br><br>
+After the database is finished being set up, now we have to modify the PHP and apache2 config files. First, run `php -i | grep /.+/php.ini -oE` to find the path of your php.ini file. Once you find it, open it with `sudo nano` and uncomment the line that says `extension=pdo_mysql`. Next, edit the apache2 config file with `sudo nano /etc/apache2/apache2.conf` and go to line 172. There should be a line that says AllowOverride, and you need to set that value to be `All`. <br> <br>
+We've modified the apache and php config files, so now we need to restart apache webserver. You can do that with `sudo systemctl restart apache2`. Once that is complete, you should be able to access the ThingRanker homepage on your device's IP address.
 
 ## Dev Setup
 To work on the project, you need to install MySql, PHP, and Apache2. Connect PHP to Apache2 and make sure that PDO_MySql is enabled. In Apache2, enabe mod_rewrite.so for the links to work correctly. In MySql, create a database named `test` with username `root` and password `billybob`. Once that's all set up correctly, run the install_db.sql while logged into the database. If you're on windows, you can use WAMP to make setup easier.
