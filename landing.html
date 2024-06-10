@@ -1,47 +1,133 @@
 <!DOCTYPE html> 
 <html>
     <head>
-        <link rel="stylesheet" href="landing.css">
-        <title>Setup</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        <link rel="stylesheet" href="landing.css">
+        <link rel="stylesheet" href="fonts.css">
+        <link rel="stylesheet" href="landinglayout.css">
+        <link rel="stylesheet" href="setuptable.css">
+        <title>Landing</title>
 
     </head>
     <body>
         <h1>Competition Name</h1>
+        <input type="button" class="gear" value="🛠">
 
         <section>
-            <div class="list">
-              <ul>
-                <li>Thing1</li>
-                <li>Thing2</li>
-                <li>Thing3</li>
-                <li>Thing4</li>
-                <li>Thing5</li>
-                <li>Thing6</li>
-                <li>Thing7</li>
-                <li>Thing8</li>
-                <li>Thing9</li>
-                <li>Thing10</li>
-                <li>Thing11</li>
-                <li>Thing12</li>
-                <li>Thing13</li>
-                <li>Thing14</li>
-                <li>Thing15</li>
-                <li>Thing16</li>
-                <li>Thing17</li>
-                <li>Thing18</li>
-                <li>Thing19</li>
-                <li>Thing20</li>
-              </ul>
+            <div>
+                <table>
+                    <tr>
+                      <th>RANK</th>
+                      <th>THING</th>
+                      <th>RATING</th>
+                      <th>VARIANCE</th>
+                      <th>DELETE</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>thing1</td>
+                      <td>10</td>
+                      <td>100</td>
+                      <td><input id="delete" type="button" value="X"></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>fdaskdjfaeworwer</td>
+                      <td>9</td>
+                      <td>95</td>
+                      <td><input id="delete" type="button" value="X"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>fdaskdjfaeworwer</td>
+                        <td>9</td>
+                        <td>95</td>
+                        <td><input id="delete" type="button" value="X"></td>
+                      </tr>
+                  </table>
             </div>
         </section>
 
-          <form action="/new.php">
-            <div class="field">
-                <input type="text" class="add" placeholder="+ADD ITEM"/>
-            </div>
-            <input class = "button" type="submit" value="ADD">
-        </form>
-
-        <script src="landing.js"></script>
+        <form>
+            <input id="myInput" type="text" name="userinput" class="add" placeholder="+ADD ITEM">
+            <input id="myBtn" type="button" class="button" value="ADD" onclick="AddLi(userinput.value)">
+        </form> 
+        <input class = "start" type="submit" value="START">
     </body>
 </html>
